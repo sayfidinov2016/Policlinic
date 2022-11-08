@@ -1,0 +1,44 @@
+﻿<Page x:Class="Policlinic.AdminPage.Filial.FilialPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Policlinic.AdminPage.Filial"
+      mc:Ignorable="d" 
+      d:DesignHeight="339" d:DesignWidth="772"
+      Title="Фелиалы">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <Label Width="auto">Фелиалы</Label>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="FilialList"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№"
+                                    Binding="{Binding Polyclinic_id}"
+                                    Width="1*"/>
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Name}"
+                                    Width="10*"/>
+                <DataGridTextColumn Header="Адрес"
+                                    Binding="{Binding Address}"
+                                    Width="10*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
+            <Button x:Name="BackBtn"
+                    Margin="20 0"
+                    Content="Назад" Click="BackBtn_Click"/>
+            <Button x:Name="RemoveBtn" Margin="20 0" Content="Удалить" Click="RemoveBtn_Click"/>
+            <Button x:Name="ChangeBtn" Margin="20 0" Content="Изменить" Click="ChangeBtn_Click"/>
+            <Button x:Name="AddBtn" Margin="20 0" Content="Довавить" Click="AddBtn_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>

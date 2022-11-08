@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PolyclinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_id" />
+    </Key>
+    <Property Name="Admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="Doctor_id" />
+    </Key>
+    <Property Name="Doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Flor_id" Type="Int32" Nullable="false" />
+    <Property Name="DataOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Specialty_id" Type="Int32" Nullable="false" />
+    <Property Name="Cabinet" Type="Int32" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Polyclinic_id" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Floor" Relationship="Self.FK_Doctors_Floor" FromRole="Doctors" ToRole="Floor" />
+    <NavigationProperty Name="Polyclinic" Relationship="Self.FK_Doctors_Polyclinic" FromRole="Doctors" ToRole="Polyclinic" />
+    <NavigationProperty Name="Specialty" Relationship="Self.FK_Doctors_Specialty" FromRole="Doctors" ToRole="Specialty" />
+    <NavigationProperty Name="Visits" Relationship="Self.FK_Visits_Doctors" FromRole="Doctors" ToRole="Visits" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="Floor_id" />
+    </Key>
+    <Property Name="Floor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Floor1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Floor" FromRole="Floor" ToRole="Doctors" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patients_Floor" FromRole="Floor" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="Patient_id" />
+    </Key>
+    <Property Name="Patient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Policy" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Floor_id" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Floor" Relationship="Self.FK_Patients_Floor" FromRole="Patients" ToRole="Floor" />
+    <NavigationProperty Name="SickLeave" Relationship="Self.FK_SickLeave_Patients" FromRole="Patients" ToRole="SickLeave" />
+    <NavigationProperty Name="Visits" Relationship="Self.FK_Visits_Patients" FromRole="Patients" ToRole="Visits" />
+    <NavigationProperty Name="Direction" Relationship="PolyclinicModel.FK_Direction_Patients" FromRole="Patients" ToRole="Direction" />
+  </EntityType>
+  <EntityType Name="Polyclinic">
+    <Key>
+      <PropertyRef Name="Polyclinic_id" />
+    </Key>
+    <Property Name="Polyclinic_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Polyclinic" FromRole="Polyclinic" ToRole="Doctors" />
+  </EntityType>
+  <EntityType Name="SickLeave">
+    <Key>
+      <PropertyRef Name="SickLeave_id" />
+    </Key>
+    <Property Name="SickLeave_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_id" Type="Int32" Nullable="false" />
+    <Property Name="OpeningData" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ClosingData" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_SickLeave_Patients" FromRole="SickLeave" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Specialty">
+    <Key>
+      <PropertyRef Name="Specialty_id" />
+    </Key>
+    <Property Name="Specialty_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Specialty1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Doctors_Specialty" FromRole="Specialty" ToRole="Doctors" />
+    <NavigationProperty Name="Direction" Relationship="PolyclinicModel.FK_Direction_Specialty" FromRole="Specialty" ToRole="Direction" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Visits">
+    <Key>
+      <PropertyRef Name="Visit_id" />
+    </Key>
+    <Property Name="Visit_id" Type="Int32" Nullable="false" />
+    <Property Name="Doctor_id" Type="Int32" Nullable="false" />
+    <Property Name="Patient_id" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK_Visits_Doctors" FromRole="Visits" ToRole="Doctors" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Visits_Patients" FromRole="Visits" ToRole="Patients" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Doctors_Floor">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="Floor_id" />
+      </Principal>
+      <Dependent Role="Doctors">
+        <PropertyRef Name="Flor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctors_Polyclinic">
+    <End Role="Polyclinic" Type="Self.Polyclinic" Multiplicity="1" />
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Polyclinic">
+        <PropertyRef Name="Polyclinic_id" />
+      </Principal>
+      <Dependent Role="Doctors">
+        <PropertyRef Name="Polyclinic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctors_Specialty">
+    <End Role="Specialty" Type="Self.Specialty" Multiplicity="1" />
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialty">
+        <PropertyRef Name="Specialty_id" />
+      </Principal>
+      <Dependent Role="Doctors">
+        <PropertyRef Name="Specialty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visits_Doctors">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
+    <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="Doctor_id" />
+      </Principal>
+      <Dependent Role="Visits">
+        <PropertyRef Name="Doctor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Floor">
+    <End Role="Floor" Type="Self.Floor" Multiplicity="1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="Floor_id" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="Floor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SickLeave_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="SickLeave" Type="Self.SickLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="SickLeave">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visits_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Visits">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Polyclinicdb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+    <EntitySet Name="Floor" EntityType="Self.Floor" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" />
+    <EntitySet Name="Polyclinic" EntityType="Self.Polyclinic" />
+    <EntitySet Name="SickLeave" EntityType="Self.SickLeave" />
+    <EntitySet Name="Specialty" EntityType="Self.Specialty" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Visits" EntityType="Self.Visits" />
+    <AssociationSet Name="FK_Doctors_Floor" Association="Self.FK_Doctors_Floor">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="Doctors" EntitySet="Doctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctors_Polyclinic" Association="Self.FK_Doctors_Polyclinic">
+      <End Role="Polyclinic" EntitySet="Polyclinic" />
+      <End Role="Doctors" EntitySet="Doctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctors_Specialty" Association="Self.FK_Doctors_Specialty">
+      <End Role="Specialty" EntitySet="Specialty" />
+      <End Role="Doctors" EntitySet="Doctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visits_Doctors" Association="Self.FK_Visits_Doctors">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="Visits" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Floor" Association="Self.FK_Patients_Floor">
+      <End Role="Floor" EntitySet="Floor" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SickLeave_Patients" Association="Self.FK_SickLeave_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="SickLeave" EntitySet="SickLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visits_Patients" Association="Self.FK_Visits_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Visits" EntitySet="Visits" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PolyclinicModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PolyclinicModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Direction" EntityType="PolyclinicModel.Direction" />
+    <AssociationSet Name="FK_Direction_Patients" Association="PolyclinicModel.FK_Direction_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Direction" EntitySet="Direction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direction_Specialty" Association="PolyclinicModel.FK_Direction_Specialty">
+      <End Role="Specialty" EntitySet="Specialty" />
+      <End Role="Direction" EntitySet="Direction" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Direction">
+    <Key>
+      <PropertyRef Name="Direction_id" />
+    </Key>
+    <Property Name="Direction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Specialty_id" Type="Int32" Nullable="false" />
+    <Property Name="Patient_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="PolyclinicModel.FK_Direction_Patients" FromRole="Direction" ToRole="Patients" />
+    <NavigationProperty Name="Specialty" Relationship="PolyclinicModel.FK_Direction_Specialty" FromRole="Direction" ToRole="Specialty" />
+  </EntityType>
+  <Association Name="FK_Direction_Patients">
+    <End Type="PolyclinicModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="PolyclinicModel.Direction" Role="Direction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Direction">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direction_Specialty">
+    <End Type="PolyclinicModel.Specialty" Role="Specialty" Multiplicity="1" />
+    <End Type="PolyclinicModel.Direction" Role="Direction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialty">
+        <PropertyRef Name="Specialty_id" />
+      </Principal>
+      <Dependent Role="Direction">
+        <PropertyRef Name="Specialty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

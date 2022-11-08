@@ -1,0 +1,108 @@
+﻿<Window x:Class="Policlinic.Registr.RegistrForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Policlinic.Registr"
+        mc:Ignorable="d"
+        Title="Регистрация" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Label Width="auto" FontSize="25">Регистрация</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <WrapPanel HorizontalAlignment="Center" 
+                       Margin="10">
+                <StackPanel Margin="5">
+                    <TextBlock Text="Имя:" 
+                               FontSize="15"/>
+                    <TextBox x:Name="NameTxt"/>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Фамилия:" 
+                               FontSize="15"/>
+                    <TextBox x:Name="LastnameTxt" />
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Отчество:" 
+                               FontSize="15"/>
+                    <TextBox x:Name="PatronymicTxt" />
+                </StackPanel>
+                <WrapPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Дата рождение:" 
+                                   FontSize="15"/>
+                        <DatePicker x:Name="DateOfBirthTxt" 
+                                    Width="150"
+                                    Height="40">
+                        </DatePicker>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Пол"
+                                   FontSize="15"/>
+                        <ComboBox x:Name="FloorBox"
+                            Width="50" />
+                    </StackPanel>
+                </WrapPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Страховой полис:" 
+                               FontSize="15"/>
+                    <TextBox Name="PolicyTxt" MaxLength="16"/>
+                </StackPanel>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="1" 
+                       HorizontalAlignment="Center" 
+                       Margin="10"
+                       Orientation="Vertical">
+                <StackPanel Margin="5">
+                    <TextBlock Text="Адрес:" 
+                               FontSize="15"/>
+                    <TextBox Name="AddressText"/>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Номер телелефона:" 
+                               FontSize="15"/>
+                    <TextBox Name="PhoneTxt" 
+                             Width="170"
+                             MaxLength="12"/>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Логин:" 
+                               FontSize="15"/>
+                    <TextBox Name="LoginTxt" 
+                             Width="170"
+                             MaxLength="12"/>
+                </StackPanel>
+                <StackPanel Margin="5">
+                    <TextBlock Text="Пароль:" 
+                               FontSize="15"/>
+                    <TextBox Name="PasswordTxt" 
+                             Width="170"
+                             MaxLength="12"/>
+                </StackPanel>
+                <TextBlock Foreground="Red" Margin="5">Логин и пароль должны быть
+                    <LineBreak/>
+                 больше 8 и меньше 12 символов</TextBlock>
+            </WrapPanel>
+        </Grid>
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
+            <Button x:Name="ExitBtn" 
+                    Margin="30 5" 
+                    Content="Отмена" Click="ExitBtn_Click"/>
+            <Button x:Name="RegistrBtn"
+                Margin="30 5" Width="120" 
+                    Content="Зарегестрироваться" Click="RegistrBtn_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿<Page x:Class="Policlinic.Doctor.MenuDocPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Policlinic.Doctor"
+      mc:Ignorable="d" 
+      d:DesignHeight="339" d:DesignWidth="782"
+      Title="MenuDocPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1.3*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Записи"/>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="VisitList"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Пациент"
+                    Width="*"
+                    Binding="{Binding Patients.FIO}"/>
+                <DataGridTextColumn 
+                    Header="Дата"
+                    Width="200"
+                    Binding="{Binding Data}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Grid.Row="2" 
+                       HorizontalAlignment="Center">
+
+            <Button x:Name="AcceptBtn" 
+                    Margin="10" 
+                    Content="Принять" 
+                    Click="AcceptBtn_Click"/>
+            
+        </WrapPanel>
+    </Grid>
+</Page>

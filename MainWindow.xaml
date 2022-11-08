@@ -1,0 +1,49 @@
+﻿<Window x:Class="Policlinic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Policlinic"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="400">
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Label FontSize="25" >Авторизация</Label>
+        <Grid Background="LightGray" 
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock FontSize="25">Логин</TextBlock>
+                <TextBox x:Name="LoginTxt" 
+                         FontSize="25"
+                         Height="40"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                <TextBlock FontSize="25">Пароль</TextBlock>
+                <TextBox x:Name="PasswordTxt" 
+                         FontSize="25" 
+                         Height="40"/>
+            </StackPanel>
+        </Grid>
+        <Grid Background="LightGray" 
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="25 0" x:Name="RegistrBtn" Content="Регистрация" FontSize="15" Width="auto" Click="RegistrBtn_Click_1"/>
+            <Button Grid.Column="1" Margin="25 0" x:Name="VhodBtn" Content="Войти" FontSize="15" HorizontalAlignment="Left" Click="VhodBtn_Click"/>
+        </Grid>
+    </Grid>
+</Window>

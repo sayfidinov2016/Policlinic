@@ -1,0 +1,57 @@
+﻿<Window x:Class="Policlinic.Doctor.MenuDocForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Policlinic.Doctor"
+        mc:Ignorable="d"
+        Title="Врач" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        
+            
+            <StackPanel Grid.Column="1">
+                <WrapPanel>
+                    <TextBox x:Name="LastnameTxt"
+                             Width="auto" 
+                             Margin="10"
+                             IsReadOnly="True" 
+                             BorderBrush="Snow"/>
+                    <TextBox x:Name="NameTxt" 
+                             Width="auto" 
+                             Margin="10"
+                             IsReadOnly="True"  
+                             BorderBrush="Snow"/>
+                    <TextBox x:Name="PatronymicTxt" 
+                             Width="auto" 
+                             Margin="10"
+                             IsReadOnly="True"  
+                             BorderBrush="Snow"/>
+                <TextBox x:Name="SpecialtyTxt" 
+                         Width="auto" 
+                         Margin="20 0 0 0 " 
+                         FontSize="15" 
+                         Foreground="Gray"
+                         HorizontalAlignment="Left"
+                         BorderBrush="Snow"
+                         IsReadOnly="True"/>
+            </WrapPanel>
+                
+            </StackPanel>
+        
+        <Button x:Name="ExitForm" 
+                    Width="auto" Height="auto"
+                    HorizontalAlignment="Right" 
+                    Margin="5" 
+                    Content="Выйти" 
+                    Click="ExitForm_Click"/>
+
+        <Frame Grid.Row="1"
+               x:Name="DoctorFrame"
+               Margin="5"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

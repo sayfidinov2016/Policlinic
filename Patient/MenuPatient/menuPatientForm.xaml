@@ -1,0 +1,49 @@
+﻿<Window x:Class="Policlinic.Patient.MenuPatient.menuPatientForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Policlinic.Patient.MenuPatient"
+        mc:Ignorable="d"
+        Title="Пациент" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <TextBox x:Name="LastnameTxt" 
+                     Width="auto" 
+                     BorderBrush="Snow" 
+                     Margin="10"
+                     IsReadOnly="True"/>
+            <TextBox x:Name="NameTxt"
+                     Width="auto" 
+                     BorderBrush="Snow" 
+                     Margin="10"
+                     IsReadOnly="True"/>
+            <TextBox x:Name="PatronymicTxt"
+                     Width="auto" 
+                     BorderBrush="Snow"
+                     Margin="10"
+                     IsReadOnly="True"/>
+            <TextBox x:Name="DateOfBirthTxt"
+                     Width="auto"
+                     BorderBrush="Snow" 
+                     Margin="30 10 5 10" />
+            <Label FontWeight="Normal" FontSize="15">года</Label>
+        </WrapPanel>
+        <Button x:Name="ExitForm" 
+                HorizontalAlignment="Right" 
+                Margin="5"
+                Width="auto" Height="auto"
+                Content="Выйти" 
+                Click="ExitForm_Click"/>
+
+        <Frame x:Name="PatientFrame" 
+                Grid.Row="2"
+                Margin="5"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

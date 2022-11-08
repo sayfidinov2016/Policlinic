@@ -1,0 +1,54 @@
+﻿<Page x:Class="Policlinic.AdminPage.MenuAdmin.DataPolic"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Policlinic.AdminPage.MenuAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="339" d:DesignWidth="772"
+      Title="DataPolic">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel HorizontalAlignment="Center"
+                   Orientation="Vertical">
+            <Label Content="Данные визитов"
+                   Margin="5"/>
+            <Button x:Name="SpecialtyBtn" 
+                    Margin="5" 
+                    Width="150"
+                    Content="Специальности"
+                    Click="SpecialtyBtn_Click"/>
+            <Button x:Name="VisitBtn" 
+                    Margin="5" 
+                    Width="150"
+                    Content="Визиты"
+                    Click="VisitBtn_Click"/>
+            <Button x:Name="SickLeaveBtn" 
+                    Margin="5" 
+                    Width="150"
+                    Content="Больничный листы"
+                    Click="SickLeaveBtn_Click"/>
+            <Button x:Name="DirectionBtn" 
+                    Margin="5" 
+                    Width="150"
+                    Content="Направления"
+                    Click="DirectionBtn_Click"/>
+        </WrapPanel>
+        
+        <Button Grid.Row="1"
+                x:Name="ExitBtn"
+                HorizontalAlignment="Left"
+                Margin="5"
+                Content="&lt;&lt;&lt;"
+                FontSize="15"
+                Width="auto"
+                Height="auto"
+                Click="ExitBtn_Click"/>
+
+    </Grid>
+</Page>
